@@ -1,0 +1,37 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+
+        <!-- 1. Database Connection Settings -->
+        <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/studentdb?useSSL=false&amp;serverTimezone=UTC</property>
+
+        <!-- !! IMPORTANT: CHANGE THESE to your MySQL username and password !! -->
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">root</property>
+        <!-- !! IMPORTANT: CHANGE THESE !! -->
+
+        <!-- 2. JDBC connection pool (use built-in) -->
+        <property name="hibernate.connection.pool_size">1</property>
+
+        <!-- 3. SQL Dialect (tells Hibernate to generate MySQL-specific SQL) -->
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</property>
+
+        <!-- 4. Show all executed SQL in the console (good for debugging) -->
+        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.format_sql">true</property>
+
+        <!-- 5. "hbm2ddl.auto" - Automatically creates/updates the table -->
+        <!-- "update" will create the table if it's missing, or update it if
+             your @Entity class changes. It's safe for development. -->
+        <property name="hibernate.hbm2ddl.auto">update</property>
+
+        <!-- 6. Tell Hibernate about our @Entity class -->
+        <!-- This is the full path to the Student.java class -->
+        <mapping class="com.example.hibernate.entity.Student"/>
+
+    </session-factory>
+</hibernate-configuration>
